@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import {
     LOGIN_USER,
     LOGIN_USER_SUCCESS,
@@ -5,12 +6,27 @@ import {
     REGISTER_USER_SUCCESS,
     LOGOUT_USER
   } from "../../constants/actionTypes";
-  
-  const INIT_STATE = {
-    user: {},
+
+type InitialStateType = {
+    authData: authDatatType,
+    loading: boolean
+  }
+
+export type authDatatType = {
+    loggedIn: boolean,
+    user: userType | null
+  }
+
+export type userType = {
+    accessToken: string,
+    userId: string
+  }
+
+  const INIT_STATE: InitialStateType = {
+    authData: { loggedIn: false, user: null },
     loading: false
   };
-  
+
   export default (state = INIT_STATE, action: any) => {
     switch (action.type) {
       case LOGIN_USER:
@@ -18,18 +34,18 @@ import {
 
       case LOGIN_USER_SUCCESS:
         // notify.success('Login Success');
-        return { ...state, loading: false, user: action.payload };
+        return { ...state, loading: false, authData: action.payload };
 
       case REGISTER_USER:
         return { ...state, loading: true };
 
       case REGISTER_USER_SUCCESS:
         // notify.success('Register User Success');
-        return { ...state, loading: false, user: action.payload.uid };
+        return { ...state, loading: false, authData: action.payload.uid };
 
       case LOGOUT_USER:
-        return { ...state, user: null };
-        
+        return { ...state, authData: null };
+
       default:
         return { ...state };
     }

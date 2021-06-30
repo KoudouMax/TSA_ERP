@@ -1,4 +1,4 @@
-# Getting Started with Create React App and Fluent UI
+# TSA ERP
 
 This is a [Create React App](https://github.com/facebook/create-react-app) based repo that comes with Fluent UI pre-installed!
 
@@ -58,3 +58,19 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+# How to deploy to git
+
+## …or create a new repository on the command line
+echo "# test" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/KoudouMax/test.git
+git push -u origin main
+
+## …or push an existing repository from the command line
+git remote add origin https://github.com/KoudouMax/test.git
+git branch -M main
+git push -u origin main

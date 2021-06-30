@@ -11,7 +11,7 @@ import {store, persistor} from './store'
 
 export const App: React.FunctionComponent = () => {
   return (
-    <ThemeProvider applyTo='body' theme={lightTheme}>
+    <ThemeProvider applyTo='body' theme={lightTheme} style={{height: '100%'}}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Router>

@@ -3,19 +3,17 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute'
 
 import AppRoutes from './app'
-import loginPage from '../components/05_pages/loginPage';
+import {LoginPage} from '../components/05_pages';
 
-const MainRoutes: React.FunctionComponent = (props) => {
-    const {match, location} = props as any
+const MainRoutes: React.FC<any> = (props) => {
+    const {match, location} = props
     if (location.pathname === '/'  || location.pathname==='/app'|| location.pathname==='/app/') {
         return (<Redirect to='/app/tsa' />);
     }
     return(
         <Switch>
-            <ProtectedRoute path={`${match.url}app`} >
-                <AppRoutes />
-            </ProtectedRoute>
-            <Route path='/login' component={loginPage} />
+            <ProtectedRoute path={`${match.url}app`} ><AppRoutes /></ProtectedRoute>
+            <Route path='/login' component={LoginPage} />
         </Switch>
     )
 }

@@ -6,7 +6,7 @@ export type ProtectedRouteProps = {
 } & RouteProps;
 
 const ProtectedRoute = ({ children, ...rest }: ProtectedRouteProps ) =>{
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   return (
     <Route
       {...rest}
